@@ -1,3 +1,4 @@
+/* eslint-disable arrow-body-style */
 import axios from 'axios';
 
 const axiosClient = axios.create();
@@ -13,24 +14,32 @@ const getRequest = (URL) =>
 	axiosClient
 		.get(`${URL}`)
 		.then((response) => response)
-		.catch((error) => error);
+		.catch((error) => {
+			return { ...error, success: false };
+		});
 
 const postRequest = (URL, payload) =>
 	axiosClient
 		.post(`${URL}`, payload)
 		.then((response) => response)
-		.catch((error) => error);
+		.catch((error) => {
+			return { ...error, success: false };
+		});
 
 const patchRequest = (URL, payload) =>
 	axiosClient
 		.patch(`${URL}`, payload)
 		.then((response) => response)
-		.catch((error) => error);
+		.catch((error) => {
+			return { ...error, success: false };
+		});
 
 const deleteRequest = (URL) =>
 	axiosClient
 		.delete(`${URL}`)
 		.then((response) => response)
-		.catch((error) => error);
+		.catch((error) => {
+			return { ...error, success: false };
+		});
 
 export { getRequest, postRequest, patchRequest, deleteRequest };

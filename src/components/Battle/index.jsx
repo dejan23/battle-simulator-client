@@ -10,7 +10,11 @@ function Battle() {
 	const [reloadPercentage, setReloadPercentage] = useState(0);
 
 	const handleBattleList = () => {
-		getRequest('/battle/').then((res) => setList(res.data));
+		getRequest('/battle/').then((res) => {
+			if (res.success) {
+				setList(res.data);
+			}
+		});
 	};
 
 	const handleSubmit = (e) => {
@@ -35,9 +39,11 @@ function Battle() {
 	};
 
 	const reload = () => {
-		getRequest('/battle/seed').then(() => {
-			handleBattleList();
-			setSelectedBattles([]);
+		getRequest('/battle/seed').then((res) => {
+			if (res.success) {
+				handleBattleList();
+				setSelectedBattles([]);
+			}
 		});
 	};
 

@@ -11,7 +11,9 @@ function BattleSingle() {
 
 	const fetchBattle = () => {
 		getRequest(`/battle/single?id=${id}`).then((res) => {
-			setBattle(res.data.battle);
+			if (res.success) {
+				setBattle(res.data.battle);
+			}
 		});
 	};
 

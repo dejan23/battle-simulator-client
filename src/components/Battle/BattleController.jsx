@@ -8,9 +8,11 @@ function BattleController({
 	emptySelectedBattles,
 }) {
 	const start = (ids) => {
-		getRequest(`/battle/start?ids=${ids}`).then(() => {
-			emptySelectedBattles();
-			handleBattleList();
+		getRequest(`/battle/start?ids=${ids}`).then((res) => {
+			if (res.success) {
+				emptySelectedBattles();
+				handleBattleList();
+			}
 		});
 	};
 

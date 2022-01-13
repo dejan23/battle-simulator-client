@@ -1,4 +1,8 @@
 # Battle Simulator Client
+
+# Note
+
+- app is listening on port 3000 by default
 #### Commands
 
 ```

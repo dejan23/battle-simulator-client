@@ -1,12 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { postRequest } from '../../utils/axios.util';
+import { deleteRequest } from '../../utils/axios.util';
 
 function BattleList({ list, getBattleList, selectBattles, selectedBattles }) {
 	const deleteBattle = (id) => {
-		postRequest('/battle/delete', {
-			id,
-		}).then(() => getBattleList());
+		deleteRequest(`/battle/delete?id=${id}`).then(() =>
+			getBattleList()
+		);
 	};
 
 	const renderList = () => {

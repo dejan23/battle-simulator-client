@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useParams } from 'react-router';
 import dayjs from 'dayjs';
-import { getRequest, postRequest } from '../../utils/axios.util';
+import { getRequest, deleteRequest } from '../../utils/axios.util';
 import BattleAddArmy from './BattleAddArmy';
 
 function BattleSingle() {
@@ -16,9 +16,9 @@ function BattleSingle() {
 	};
 
 	const deleteArmy = (armyId, battleId) => {
-		postRequest('/army/delete', { armyId, battleId }).then(() =>
-			fetchBattle()
-		);
+		deleteRequest(
+			`/army/delete?armyId=${armyId}&battleId=${battleId}`
+		).then(() => fetchBattle());
 	};
 
 	const checkIfInclude = (string) => {

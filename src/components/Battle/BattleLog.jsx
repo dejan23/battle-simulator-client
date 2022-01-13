@@ -13,7 +13,7 @@ function BattleLog() {
 		setLoading(true);
 		setError(null);
 
-		getRequest(`/battle/log?id=${id}`).then((res) => {
+		getRequest(`/battle/single/${id}/log`).then((res) => {
 			if (res.response) {
 				setLoading(false);
 				setError(res.response.data.message);
@@ -28,10 +28,10 @@ function BattleLog() {
 		<div>
 			{data.map((el, i) => {
 				if (el.winner) {
-					return <div key={el.id}>{el.winner}</div>;
+					return <div key={el.logId}>{el.winner}</div>;
 				}
 				return (
-					<div key={el.id}>
+					<div key={el.logId}>
 						{i + 1}. {el.attackingArmyName} with{' '}
 						{el.attackingArmyUnits} units attacked{' '}
 						{el.defendingArmyName} with{' '}

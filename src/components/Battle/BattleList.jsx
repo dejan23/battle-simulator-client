@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { postRequest } from '../../utils/axios.util';
 
-function BattleList({ list, getBattleList, selectBattles }) {
+function BattleList({ list, getBattleList, selectBattles, selectedBattles }) {
 	const deleteBattle = (id) => {
 		postRequest('/battle/delete', {
 			id,
@@ -11,11 +11,16 @@ function BattleList({ list, getBattleList, selectBattles }) {
 
 	const renderList = () => {
 		if (!list.length) {
-			console.log();
+			return <div>No battles added</div>;
 		}
 
 		return list.map((el) => (
 			<div
+				style={{
+					backgroundColor: selectedBattles.includes(el.id)
+						? '#93b9ff'
+						: '',
+				}}
 				className="hover:cursor-default hover:bg-slate-200 p-1 flex justify-between text-left"
 				key={el.id}
 			>

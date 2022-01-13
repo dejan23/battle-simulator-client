@@ -119,6 +119,7 @@ function Battle() {
 						list={list}
 						getBattleList={handleBattleList}
 						selectBattles={handleSelectBattles}
+						selectedBattles={selectedBattles}
 					/>
 				</div>
 			</div>

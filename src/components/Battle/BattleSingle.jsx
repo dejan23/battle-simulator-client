@@ -98,7 +98,7 @@ function BattleSingle() {
 					</div>
 					<div>
 						{data.winner ? (
-							<div>
+							<div className="text-blue-400">
 								Battle winner: {data.winner}
 							</div>
 						) : (
@@ -107,7 +107,10 @@ function BattleSingle() {
 					</div>
 					<div>
 						{data.winner ? (
-							<Link to={`/battle/${data.id}/log`}>
+							<Link
+								className="text-blue-600"
+								to={`/battle/${data.id}/log`}
+							>
 								View battle log
 							</Link>
 						) : (

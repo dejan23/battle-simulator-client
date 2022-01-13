@@ -13,7 +13,9 @@ axiosClient.defaults.timeout = 2000;
 const getRequest = (URL) =>
 	axiosClient
 		.get(`${URL}`)
-		.then((response) => response)
+		.then((response) => {
+			return { ...response, success: true };
+		})
 		.catch((error) => {
 			return { ...error, success: false };
 		});
@@ -21,7 +23,9 @@ const getRequest = (URL) =>
 const postRequest = (URL, payload) =>
 	axiosClient
 		.post(`${URL}`, payload)
-		.then((response) => response)
+		.then((response) => {
+			return { ...response, success: true };
+		})
 		.catch((error) => {
 			return { ...error, success: false };
 		});
@@ -29,7 +33,9 @@ const postRequest = (URL, payload) =>
 const patchRequest = (URL, payload) =>
 	axiosClient
 		.patch(`${URL}`, payload)
-		.then((response) => response)
+		.then((response) => {
+			return { ...response, success: true };
+		})
 		.catch((error) => {
 			return { ...error, success: false };
 		});
@@ -37,7 +43,9 @@ const patchRequest = (URL, payload) =>
 const deleteRequest = (URL) =>
 	axiosClient
 		.delete(`${URL}`)
-		.then((response) => response)
+		.then((response) => {
+			return { ...response, success: true };
+		})
 		.catch((error) => {
 			return { ...error, success: false };
 		});

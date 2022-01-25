@@ -10,7 +10,7 @@ function BattleSingle() {
 	const { id } = useParams();
 
 	const fetchBattle = () => {
-		getRequest(`/battle/single?id=${id}`).then((res) => {
+		getRequest(`/battles/${id}`).then((res) => {
 			if (res.success) {
 				setBattle(res.data.battle);
 			}
@@ -18,9 +18,9 @@ function BattleSingle() {
 	};
 
 	const deleteArmy = (armyId, battleId) => {
-		deleteRequest(
-			`/army/delete?armyId=${armyId}&battleId=${battleId}`
-		).then(() => fetchBattle());
+		deleteRequest(`/armies/${armyId}/battles/${battleId}`).then(() =>
+			fetchBattle()
+		);
 	};
 
 	const checkIfInclude = (string) => {

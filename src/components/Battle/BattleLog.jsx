@@ -13,7 +13,7 @@ function BattleLog() {
 		setLoading(true);
 		setError(null);
 
-		getRequest(`/battle/single/${id}/log`).then((res) => {
+		getRequest(`/battles/${id}/log`).then((res) => {
 			if (!res.success) {
 				setLoading(false);
 				setError(res.response.data.message);

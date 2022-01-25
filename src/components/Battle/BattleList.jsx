@@ -4,9 +4,7 @@ import { deleteRequest } from '../../utils/axios.util';
 
 function BattleList({ list, getBattleList, selectBattles, selectedBattles }) {
 	const deleteBattle = (id) => {
-		deleteRequest(`/battle/delete?id=${id}`).then(() =>
-			getBattleList()
-		);
+		deleteRequest(`/battles/${id}`).then(() => getBattleList());
 	};
 
 	const renderList = () => {

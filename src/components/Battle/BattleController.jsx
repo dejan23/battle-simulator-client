@@ -8,7 +8,7 @@ function BattleController({
 	emptySelectedBattles,
 }) {
 	const start = (ids) => {
-		getRequest(`/battle/start?ids=${ids}`).then((res) => {
+		getRequest(`/battles/start?ids=${ids}`).then((res) => {
 			if (res.success) {
 				emptySelectedBattles();
 				handleBattleList();

@@ -12,14 +12,12 @@ function BattleAddArmy({ fetchBattle }) {
 
 	const addArmyToTheBattle = (values) => {
 		setErrorMessages(null);
-		postRequest(`/army/create`, { ...values, battleId: id }).then(
-			(res) => {
-				if (res?.response?.data.code === 400) {
-					setErrorMessages(res.response.data.message);
-				}
-				fetchBattle();
+		postRequest(`/armies`, { ...values, battleId: id }).then((res) => {
+			if (res?.response?.data.code === 400) {
+				setErrorMessages(res.response.data.message);
 			}
-		);
+			fetchBattle();
+		});
 	};
 
 	return (
